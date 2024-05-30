@@ -5,15 +5,15 @@ using UnityEngine;
 public class MovementControl : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] SideMovement sideMovement;
+//    [SerializeField] SideMovement sideMovement;
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        sideMovement = GetComponent<SideMovement>();
+    //    sideMovement = GetComponent<SideMovement>();
 
         playerMovement.enabled = true;
-        sideMovement.enabled = false;
+  //      sideMovement.enabled = false;
     }
 
 
@@ -22,13 +22,13 @@ public class MovementControl : MonoBehaviour
         if (playerMovement.enabled == true)
         {
             playerMovement.enabled = false;
-            sideMovement.enabled = true;
+    //        sideMovement.enabled = true;
         }
 
         else
         {
             playerMovement.enabled = true;
-            sideMovement.enabled = false;
+      //      sideMovement.enabled = false;
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SideMovement : MonoBehaviour
 {
+    /*
     [SerializeField] float moveSpeed;
 
     void Update()
@@ -26,4 +27,5 @@ public class SideMovement : MonoBehaviour
 
 
     }
+    */
 }

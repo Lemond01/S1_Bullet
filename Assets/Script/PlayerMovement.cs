@@ -4,56 +4,29 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Move Speeds")]
+    public float speed = 5f;
 
-    [SerializeField] float moveForwardSpeed;
-    [SerializeField] float moveSpeed;
+    private Rigidbody rb;
 
-   
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        MoveForward();
-        Move();
-        // ContainerCheck();
+        MovePlayer();
     }
 
-    void MoveForward()
+    void MovePlayer()
     {
-        gameObject.transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0) * speed * Time.deltaTime;
+
+        // Mueve el jugador con el Rigidbody para respetar las colisiones
+        rb.MovePosition(transform.position + movement);
     }
 
-    void Move()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + moveSpeed * Time.deltaTime, transform.position.z);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            gameObject.transform.position = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime, transform.position.z);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveSpeed * Time.deltaTime);
-        }
-    }
-
-   
 }
