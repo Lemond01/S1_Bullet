@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MovePlayer();
     }
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0) * speed * Time.deltaTime;
+        Vector3 movement = new Vector3(0, moveVertical, -moveHorizontal) * speed * Time.deltaTime;
 
         // Mueve el jugador con el Rigidbody para respetar las colisiones
         rb.MovePosition(transform.position + movement);
