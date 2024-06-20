@@ -9,16 +9,6 @@ public class ControlMenu : MonoBehaviour
     public GameObject OptionsMenu;
     public GameObject How;
 
-    public void OnClickPlay()
-    {
-        SceneManager.LoadScene("Game");
-    }
-
-    public void OnClickCredits()
-    {
-        SceneManager.LoadScene("Credits");
-    }
-
     public void OnClickOptions()
     {
         MainMenu.SetActive(false);
