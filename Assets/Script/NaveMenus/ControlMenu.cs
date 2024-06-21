@@ -9,20 +9,17 @@ public class ControlMenu : MonoBehaviour
     public GameObject OptionsMenu;
     public GameObject How;
 
+    public void OnClickReturnOp()
+    {
+        OptionsMenu.SetActive(false);
+        MainMenu.SetActive(true);
+    }
     public void OnClickOptions()
     {
         MainMenu.SetActive(false);
         OptionsMenu.SetActive(true);
         How.SetActive(false);
     }
-
-    public void OnClickReturnOp()
-    {
-        OptionsMenu.SetActive(false);
-        MainMenu.SetActive(true);
-    }
-
-
 
     public void OnClickHow()
     {
@@ -46,9 +43,6 @@ public class ControlMenu : MonoBehaviour
         How.SetActive(false);
     }
 
-    void Update()
-    {
-    }
 }
 
 

@@ -2189,7 +2189,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 617175775}
-        m_TargetAssemblyTypeName: SceneNavigaation, Assembly-CSharp
+        m_TargetAssemblyTypeName: SceneNavigation, Assembly-CSharp
         m_MethodName: OnClickLoad
         m_Mode: 1
         m_Arguments:
@@ -2471,9 +2471,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 617175775}
-        m_TargetAssemblyTypeName: SceneNavigaation, Assembly-CSharp
-        m_MethodName: OnClickMenu
+      - m_Target: {fileID: 617175774}
+        m_TargetAssemblyTypeName: ControlMenu, Assembly-CSharp
+        m_MethodName: OnClickReturnOp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3332,9 +3332,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 617175775}
-        m_TargetAssemblyTypeName: SceneNavigaation, Assembly-CSharp
-        m_MethodName: OnClickMenu
+      - m_Target: {fileID: 617175774}
+        m_TargetAssemblyTypeName: ControlMenu, Assembly-CSharp
+        m_MethodName: OnClickReturnHow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
