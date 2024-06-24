@@ -9,48 +9,41 @@ public class ControlMusic : MonoBehaviour
 {
     public Slider volGeneral, volMusic, volSFX;
     public AudioMixer audioMixer;
-    [SerializeField] private TextMeshProUGUI sliderText = null;
-    [SerializeField] private float maxSliderAmount = 100.0f;
+    public TextMeshProUGUI textGeneral, textMusic, textSFX;
 
-    public void sliderUpdate(float value)
+    private float convertToPercent(float value)
     {
-        float localValue = value * maxSliderAmount;
-        sliderText.text = localValue.ToString("0%");
+        return (value + 80) / 80 * 100;
+    }
+
+    private void UpdateSliderText(Slider slider, TextMeshProUGUI text)
+    {
+        float percent = convertToPercent(slider.value);
+        text.text = Mathf.RoundToInt(percent).ToString() + "%";
     }
 
     public void ControlGeneralVol()
     {
         float general = volGeneral.value;
         audioMixer.SetFloat("General", general);
-
-        /*
-        volMusic.value = general;
-        volSFX.value = general;
-
-        audioMixer.SetFloat("V_Music", general);
-        audioMixer.SetFloat("V_SFX", general);
-        */
-
         PlayerPrefs.SetFloat("VolGeneral", general);
-        /*
-        PlayerPrefs.SetFloat("VolMusic", general);
-        PlayerPrefs.SetFloat("VolSFX", general);
-        */
+        UpdateSliderText(volGeneral, textGeneral); 
     }
 
     public void ControlMusicVol()
     {
-        float  vmusic = volMusic.value;
+        float vmusic = volMusic.value;
         audioMixer.SetFloat("V_Music", vmusic);
-
         PlayerPrefs.SetFloat("VolMusic", vmusic);
+        UpdateSliderText(volMusic, textMusic); 
     }
+
     public void ControlSFXVol()
     {
         float vsfx = volSFX.value;
         audioMixer.SetFloat("V_SFX", vsfx);
-
         PlayerPrefs.SetFloat("VolSFX", vsfx);
+        UpdateSliderText(volSFX, textSFX);
     }
 
     private void Start()
@@ -62,6 +55,10 @@ public class ControlMusic : MonoBehaviour
         audioMixer.SetFloat("General", volGeneral.value);
         audioMixer.SetFloat("V_Music", volMusic.value);
         audioMixer.SetFloat("V_SFX", volSFX.value);
+
+        UpdateSliderText(volGeneral, textGeneral);
+        UpdateSliderText(volMusic, textMusic); 
+        UpdateSliderText(volSFX, textSFX);
     }
 }
 
