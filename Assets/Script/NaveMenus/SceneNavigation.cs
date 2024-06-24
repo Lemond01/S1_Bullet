@@ -7,21 +7,27 @@ public class SceneNavigation : MonoBehaviour
 {
     public void OnClickPlay()
     {
-        SceneManager.LoadScene("Game");
+        StartCoroutine(LoadSceneWithDelay("Game", 0.0f)); 
     }
 
     public void OnClickCredits()
     {
-        SceneManager.LoadScene("Credits");
+        StartCoroutine(LoadSceneWithDelay("Credits", 0.1f)); 
     }
 
     public void OnClickLoad()
     {
-        SceneManager.LoadScene("LoadingScene");
+        StartCoroutine(LoadSceneWithDelay("LoadingScene", 2f));
     }
-
     public void OnClickMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LoadSceneWithDelay("MainMenu", 0.5f)); 
+    }
+
+    IEnumerator LoadSceneWithDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay); 
+        SceneManager.LoadScene(sceneName);
     }
 }
+
