@@ -17,13 +17,26 @@ public class PauseMenu : MonoBehaviour
         UIoptions.SetActive(false);
     }
 
+    public void CloseOptions()
+    {
+        UIoptions.SetActive(false);
+        UIpause.SetActive(true);
+    }
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
             {
-                Resume();
+                if (UIoptions.activeSelf)
+                {
+                    CloseOptions();
+                }
+                else
+                {
+                    Resume();
+                }
             }
             else
             {
@@ -37,6 +50,7 @@ public class PauseMenu : MonoBehaviour
         UIpause.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+
 
         AudioSource[] sounds = FindObjectsOfType<AudioSource>();
         for (int i = 0; i < sounds.Length; i++) 
@@ -55,11 +69,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
 
+        /* 
         AudioSource[] sounds = FindObjectsOfType<AudioSource>();
         for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].Pause();
         }
+        */
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
