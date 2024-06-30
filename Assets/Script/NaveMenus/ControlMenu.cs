@@ -8,6 +8,8 @@ public class ControlMenu : MonoBehaviour
     public GameObject MainMenu;
     public GameObject OptionsMenu;
     public GameObject How;
+    public GameObject AudioPanel;
+    public GameObject DisplayPanel;
 
     public void OnClickReturn()
     {
@@ -19,7 +21,7 @@ public class ControlMenu : MonoBehaviour
     {
         MainMenu.SetActive(false);
         OptionsMenu.SetActive(true);
-        How.SetActive(false);
+        AudioSettings();
     }
 
     public void OnClickHow()
@@ -29,12 +31,17 @@ public class ControlMenu : MonoBehaviour
         How.SetActive(true);
     }
 
-    /*public void OnClickReturnHow()
+    public void AudioSettings()
     {
-        How.SetActive(false);
-        MainMenu.SetActive(true);
+        AudioPanel.SetActive(true);
+        DisplayPanel.SetActive(false);
     }
-    */
+
+    public void DisplaySettings() 
+    {
+        AudioPanel.SetActive(false);
+        DisplayPanel.SetActive(true);
+    }
 
 
 
@@ -43,6 +50,8 @@ public class ControlMenu : MonoBehaviour
         MainMenu.SetActive(true);
         OptionsMenu.SetActive(false);
         How.SetActive(false);
+        AudioPanel.SetActive(false);
+        DisplayPanel.SetActive(false);
     }
 
 }
