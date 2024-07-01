@@ -8,31 +8,21 @@ public class ControlMenu : MonoBehaviour
     public GameObject MainMenu;
     public GameObject OptionsMenu;
     public GameObject How;
+    public GameObject AudioPanel;
+    public GameObject DisplayPanel;
 
-    public void OnClickPlay()
+    public void OnClickReturn()
     {
-        SceneManager.LoadScene("Game");
+        OptionsMenu.SetActive(false);
+        How.SetActive(false);
+        MainMenu.SetActive(true);
     }
-
-    public void OnClickCredits()
-    {
-        SceneManager.LoadScene("Credits");
-    }
-
     public void OnClickOptions()
     {
         MainMenu.SetActive(false);
         OptionsMenu.SetActive(true);
-        How.SetActive(false);
+        AudioSettings();
     }
-
-    public void OnClickReturnOp()
-    {
-        OptionsMenu.SetActive(false);
-        MainMenu.SetActive(true);
-    }
-
-
 
     public void OnClickHow()
     {
@@ -41,10 +31,16 @@ public class ControlMenu : MonoBehaviour
         How.SetActive(true);
     }
 
-    public void OnClickReturnHow()
+    public void AudioSettings()
     {
-        How.SetActive(false);
-        MainMenu.SetActive(true);
+        AudioPanel.SetActive(true);
+        DisplayPanel.SetActive(false);
+    }
+
+    public void DisplaySettings() 
+    {
+        AudioPanel.SetActive(false);
+        DisplayPanel.SetActive(true);
     }
 
 
@@ -54,11 +50,10 @@ public class ControlMenu : MonoBehaviour
         MainMenu.SetActive(true);
         OptionsMenu.SetActive(false);
         How.SetActive(false);
+        AudioPanel.SetActive(false);
+        DisplayPanel.SetActive(false);
     }
 
-    void Update()
-    {
-    }
 }
 
 
