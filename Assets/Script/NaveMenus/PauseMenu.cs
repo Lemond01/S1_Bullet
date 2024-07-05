@@ -8,6 +8,9 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject UIpause;
     public GameObject UIoptions;
+    public GameObject AudioPanel;
+    public GameObject DisplayPanel;
+
     
     private bool isPaused = false;
 
@@ -48,6 +51,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         UIpause.SetActive(false);
+        UIoptions.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
 
@@ -65,7 +69,6 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         UIpause.SetActive(true);
-        UIoptions.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
 
@@ -85,11 +88,24 @@ public class PauseMenu : MonoBehaviour
     {
         UIpause.SetActive(false);
         UIoptions.SetActive(true);
+        AudioSettings();        
     }
 
     public void LoadMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void AudioSettings()
+    {
+        AudioPanel.SetActive(true);
+        DisplayPanel.SetActive(false);
+    }
+
+    public void DisplaySettings()
+    {
+        AudioPanel.SetActive(false);
+        DisplayPanel.SetActive(true);
     }
 }

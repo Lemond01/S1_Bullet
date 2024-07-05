@@ -1237,6 +1237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIpause: {fileID: 1750069085}
   UIoptions: {fileID: 894276525}
+  AudioPanel: {fileID: 0}
+  DisplayPanel: {fileID: 0}
 --- !u!114 &1104131661
 MonoBehaviour:
   m_ObjectHideFlags: 0
