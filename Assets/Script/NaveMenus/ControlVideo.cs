@@ -15,40 +15,53 @@ public class ControlVideo : MonoBehaviour
 
     void Start()
     {
-        displayButton.onClick.AddListener(DisplayMode);
+        if (displayButton != null)
+            displayButton.onClick.AddListener(DisplayMode);
 
-        brightnessSlider.value = PlayerPrefs.GetFloat("Brightness", 0.5f);
-        brightnessPanel.color = new Color(brightnessPanel.color.r, brightnessPanel.color.g, brightnessPanel.color.b, brightnessSlider.value);
+        if (brightnessSlider != null)
+        {
+            brightnessSlider.value = PlayerPrefs.GetFloat("Brightness", 0.5f);
+            if (brightnessPanel != null)
+            {
+                brightnessPanel.color = new Color(brightnessPanel.color.r, brightnessPanel.color.g, brightnessPanel.color.b, brightnessSlider.value);
+            }
 
-        UpdateSliderText(brightnessSlider, brightnessText);
+            UpdateSliderText(brightnessSlider, brightnessText);
+        }
     }
 
     private void UpdateSliderText(Slider slider, TextMeshProUGUI text)
     {
-        float percent = (1f - slider.value / 0.9f) * 100f;
-        text.text = Mathf.RoundToInt(percent).ToString() + "%";
+        if (text != null)
+        {
+            float percent = (1f - slider.value / 0.9f) * 100f;
+            text.text = Mathf.RoundToInt(percent).ToString() + "%";
+        }
     }
 
     public void BrigthnessSettings(float valor)
     {
         sliderValue = valor;
         PlayerPrefs.SetFloat("Brightness", sliderValue);
-        brightnessPanel.color = new Color(brightnessPanel.color.r, brightnessPanel.color.g, brightnessPanel.color.b, sliderValue);
+
+        if (brightnessPanel != null)
+        {
+            brightnessPanel.color = new Color(brightnessPanel.color.r, brightnessPanel.color.g, brightnessPanel.color.b, sliderValue);
+        }
 
         UpdateSliderText(brightnessSlider, brightnessText);
     }
 
     public void DisplayMode()
     {
-        if(Screen.fullScreen)
+        if (Screen.fullScreen)
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
         }
-        else 
+        else
         {
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         }
     }
-
-
 }
+
