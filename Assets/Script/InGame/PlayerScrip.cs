@@ -10,21 +10,43 @@ public class PlayerScrip : MonoBehaviour
 
     private AudioSource audioSource;
 
+
+    [SerializeField] private float vida;
+    [SerializeField] private float maximoVida;
+
+    [SerializeField] private barradevida barradevida;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         Time.timeScale = 1.0f;
+        vida = maximoVida;
+        barradevida.InicializarBarraDeVida(vida);
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void TomarDaño(float daño)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        vida -= daño;
+        barradevida.CambiarVidaActual(vida);
+        if (vida <= 0)
         {
             gameOverObj.SetActive(true);
             Time.timeScale = 0;
             audioSource.PlayOneShot(explotion);
-          
+            Destroy(gameObject);
         }
     }
-   
+
+    public void Curar(float curacion)
+    {
+        if((vida + curacion) > maximoVida)
+        {
+            vida = maximoVida;
+        }
+        else
+        {
+            vida += curacion;
+        }
+        barradevida.CambiarVidaActual(vida);
+    }
+
 }
