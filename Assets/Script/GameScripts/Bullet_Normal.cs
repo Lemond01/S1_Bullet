@@ -8,7 +8,12 @@ public class Bullet_Normal : MonoBehaviour
     
     void Start()
     {
-        GetComponent<Rigidbody>().velocity = transform.forward * speed;
+       
+    }
+
+    void Update()
+    {
+       
     }
 
     private void OnTriggerEnter(Collider other)
