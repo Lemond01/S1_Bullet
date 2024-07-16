@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] float bulletSpeed;
 
     [SerializeField] float destroyTime;
+    internal readonly Vector3 speed;
+
     void Start()
     {
         StartCoroutine(DestroyBullet());
