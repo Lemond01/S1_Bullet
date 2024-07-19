@@ -26,6 +26,7 @@ public class ChangeCamera : MonoBehaviour
     {
         SwitchCamera();
         movementControl.SwitchControls();
+     
     }
 
     public void SwitchCamera()

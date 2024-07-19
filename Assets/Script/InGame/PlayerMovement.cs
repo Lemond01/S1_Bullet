@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
+    public float speedZ = 5f;
 
     private Rigidbody rb;
 
@@ -13,9 +15,10 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MovePlayer();
+
     }
 
     void MovePlayer()
@@ -23,8 +26,9 @@ public class PlayerMovement : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0) * speed * Time.deltaTime;
+        Vector3 movement = new Vector3(speedZ, moveVertical, -moveHorizontal) * speed * Time.deltaTime;
 
+     
         // Mueve el jugador con el Rigidbody para respetar las colisiones
         rb.MovePosition(transform.position + movement);
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementControl : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] float time;
 //    [SerializeField] SideMovement sideMovement;
 
     private void Start()
@@ -22,7 +23,8 @@ public class MovementControl : MonoBehaviour
         if (playerMovement.enabled == true)
         {
             playerMovement.enabled = false;
-    //        sideMovement.enabled = true;
+            //        sideMovement.enabled = true;
+            StartCoroutine(delaySwitcvh());
         }
 
         else
@@ -30,5 +32,11 @@ public class MovementControl : MonoBehaviour
             playerMovement.enabled = true;
       //      sideMovement.enabled = false;
         }
+    }
+
+    IEnumerator delaySwitcvh()
+    {
+        yield return new WaitForSeconds(time);
+        SwitchControls();
     }
 }

@@ -8,57 +8,51 @@ public class ControlMenu : MonoBehaviour
     public GameObject MainMenu;
     public GameObject OptionsMenu;
     public GameObject How;
+    public GameObject AudioPanel;
+    public GameObject DisplayPanel;
 
-    public void OnClickPlay()
+    public void OnClickReturn()
     {
-        SceneManager.LoadScene("Game");
-    }
-
-    public void OnClickCredits()
-    {
-        SceneManager.LoadScene("Credits");
+        if (OptionsMenu != null) OptionsMenu.SetActive(false);
+        if (How != null) How.SetActive(false);
+        if (MainMenu != null) MainMenu.SetActive(true);
     }
 
     public void OnClickOptions()
     {
-        MainMenu.SetActive(false);
-        OptionsMenu.SetActive(true);
-        How.SetActive(false);
+        if (MainMenu != null) MainMenu.SetActive(false);
+        if (OptionsMenu != null) OptionsMenu.SetActive(true);
+        AudioSettings();
     }
-
-    public void OnClickReturnOp()
-    {
-        OptionsMenu.SetActive(false);
-        MainMenu.SetActive(true);
-    }
-
-
 
     public void OnClickHow()
     {
-        MainMenu.SetActive(false);
-        OptionsMenu.SetActive(false);
-        How.SetActive(true);
+        if (MainMenu != null) MainMenu.SetActive(false);
+        if (OptionsMenu != null) OptionsMenu.SetActive(false);
+        if (How != null) How.SetActive(true);
     }
 
-    public void OnClickReturnHow()
+    public void AudioSettings()
     {
-        How.SetActive(false);
-        MainMenu.SetActive(true);
+        if (AudioPanel != null) AudioPanel.SetActive(true);
+        if (DisplayPanel != null) DisplayPanel.SetActive(false);
     }
 
-
+    public void DisplaySettings()
+    {
+        if (AudioPanel != null) AudioPanel.SetActive(false);
+        if (DisplayPanel != null) DisplayPanel.SetActive(true);
+    }
 
     void Start()
     {
-        MainMenu.SetActive(true);
-        OptionsMenu.SetActive(false);
-        How.SetActive(false);
-    }
-
-    void Update()
-    {
+        if (MainMenu != null) MainMenu.SetActive(true);
+        if (OptionsMenu != null) OptionsMenu.SetActive(false);
+        if (How != null) How.SetActive(false);
+        if (AudioPanel != null) AudioPanel.SetActive(false);
+        if (DisplayPanel != null) DisplayPanel.SetActive(false);
     }
 }
+
 
 

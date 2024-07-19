@@ -9,6 +9,14 @@ public class AttackController : MonoBehaviour
 
     private bool isShooting = false;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip clipShoot;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -31,6 +39,7 @@ public class AttackController : MonoBehaviour
 
         while (isShooting)
         {
+            audioSource.PlayOneShot(clipShoot);
             Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(shootingInterval);
         }
