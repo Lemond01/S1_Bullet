@@ -5,14 +5,13 @@ using UnityEngine;
 public class En_Bullet : MonoBehaviour
 {
     public GameObject enemyProjectilePrefab;
-    public Transform firePoint; // El punto desde donde se disparará el proyectil
-    public float fireRate = 1f; // Proyectiles por segundo
+    public Transform firePoint; 
+    public float fireRate = 1f;
     private float nextFireTime = 2f;
-    private Transform player; // Referencia al jugador
+    private Transform player; 
 
     void Start()
     {
-        // Buscar al jugador por su tag
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -31,7 +30,6 @@ public class En_Bullet : MonoBehaviour
 
     void Shoot()
     {
-        // Crear el proyectil y ajustar su rotación para que apunte al jugador
         GameObject projectile = Instantiate(enemyProjectilePrefab, firePoint.position, firePoint.rotation);
         projectile.transform.rotation = Quaternion.LookRotation(player.position - firePoint.position);
     }

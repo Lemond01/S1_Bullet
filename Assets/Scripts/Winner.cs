@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Winner : MonoBehaviour
 {
-    public string sceneToLoad; // Nombre de la escena a cargar
-
+    public string sceneToLoad;
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Verifica si el objeto que tocó el collider tiene la etiqueta "Player"
+        if (other.CompareTag("Player"))
         {
-            // Cargar la escena especificada
             SceneManager.LoadScene(sceneToLoad);
         }
     }
