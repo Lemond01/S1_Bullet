@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject AudioPanel;
     public GameObject DisplayPanel;
 
-    
     private bool isPaused = false;
 
     void Start()
@@ -55,15 +54,18 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-
+        // La música no se reinicia, solo aseguramos que se reanude si estaba pausada
         AudioSource[] sounds = FindObjectsOfType<AudioSource>();
-        for (int i = 0; i < sounds.Length; i++) 
+        for (int i = 0; i < sounds.Length; i++)
         {
-            sounds[i].Play();
+            if (!sounds[i].isPlaying)
+            {
+                sounds[i].UnPause(); // Reanudar el audio si estaba pausado
+            }
         }
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true; // Hacer visible el cursor
+        Cursor.lockState = CursorLockMode.None; // No bloquear el cursor
     }
 
     public void Pause()
@@ -72,23 +74,16 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
 
-        /* 
-        AudioSource[] sounds = FindObjectsOfType<AudioSource>();
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            sounds[i].Pause();
-        }
-        */
 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true; // Asegurarse de que el cursor sea visible
+        Cursor.lockState = CursorLockMode.None; // No bloquear el cursor
     }
 
     public void LoadOptions()
     {
         UIpause.SetActive(false);
         UIoptions.SetActive(true);
-        AudioSettings();        
+        AudioSettings();
     }
 
     public void LoadMainMenu()
