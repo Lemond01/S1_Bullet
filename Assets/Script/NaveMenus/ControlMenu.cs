@@ -13,47 +13,46 @@ public class ControlMenu : MonoBehaviour
 
     public void OnClickReturn()
     {
-        OptionsMenu.SetActive(false);
-        How.SetActive(false);
-        MainMenu.SetActive(true);
+        if (OptionsMenu != null) OptionsMenu.SetActive(false);
+        if (How != null) How.SetActive(false);
+        if (MainMenu != null) MainMenu.SetActive(true);
     }
+
     public void OnClickOptions()
     {
-        MainMenu.SetActive(false);
-        OptionsMenu.SetActive(true);
+        if (MainMenu != null) MainMenu.SetActive(false);
+        if (OptionsMenu != null) OptionsMenu.SetActive(true);
         AudioSettings();
     }
 
     public void OnClickHow()
     {
-        MainMenu.SetActive(false);
-        OptionsMenu.SetActive(false);
-        How.SetActive(true);
+        if (MainMenu != null) MainMenu.SetActive(false);
+        if (OptionsMenu != null) OptionsMenu.SetActive(false);
+        if (How != null) How.SetActive(true);
     }
 
     public void AudioSettings()
     {
-        AudioPanel.SetActive(true);
-        DisplayPanel.SetActive(false);
+        if (AudioPanel != null) AudioPanel.SetActive(true);
+        if (DisplayPanel != null) DisplayPanel.SetActive(false);
     }
 
-    public void DisplaySettings() 
+    public void DisplaySettings()
     {
-        AudioPanel.SetActive(false);
-        DisplayPanel.SetActive(true);
+        if (AudioPanel != null) AudioPanel.SetActive(false);
+        if (DisplayPanel != null) DisplayPanel.SetActive(true);
     }
-
-
 
     void Start()
     {
-        MainMenu.SetActive(true);
-        OptionsMenu.SetActive(false);
-        How.SetActive(false);
-        AudioPanel.SetActive(false);
-        DisplayPanel.SetActive(false);
+        if (MainMenu != null) MainMenu.SetActive(true);
+        if (OptionsMenu != null) OptionsMenu.SetActive(false);
+        if (How != null) How.SetActive(false);
+        if (AudioPanel != null) AudioPanel.SetActive(false);
+        if (DisplayPanel != null) DisplayPanel.SetActive(false);
     }
-
 }
+
 
 
