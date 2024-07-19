@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class En_Spawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs; // Array para los prefabs de los enemigos
-    public Transform player; // Referencia al jugador
-    public float spawnDistance = 20f; // Distancia al frente del jugador donde aparecerán los enemigos
-    public float spawnInterval = 3f; // Intervalo entre apariciones
-    public int[] enemyCounts; // Cantidad de cada tipo de enemigo
+    public GameObject[] enemyPrefabs;
+    public Transform player;
+    public float spawnDistance = 20f;
+    public float spawnInterval = 3f;
+    public int[] enemyCounts;
 
     private void Start()
     {
@@ -31,7 +31,6 @@ public class En_Spawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        // Elegir un tipo de enemigo aleatorio basado en las cantidades
         int totalEnemies = 0;
         foreach (int count in enemyCounts)
         {
@@ -52,13 +51,9 @@ public class En_Spawner : MonoBehaviour
             }
         }
 
-        // Crear una posición aleatoria al frente del jugador
         Vector3 spawnPosition = player.position + (player.forward * spawnDistance) + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
-
-        // Ajustar la rotación para que miren hacia el jugador
         Quaternion spawnRotation = Quaternion.LookRotation(-player.forward);
 
-        // Instanciar el enemigo
         Instantiate(enemyPrefabs[enemyType], spawnPosition, spawnRotation);
     }
 }
