@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 1718923154}
   SliderBar: {fileID: 349758498}
-  NextScene: Game
+  NextScene: SceneGame
 --- !u!1 &886188585
 GameObject:
   m_ObjectHideFlags: 0
